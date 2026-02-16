@@ -1,0 +1,70 @@
+@import "tailwindcss";
+/* PHASE 5: Smooth Scroll Behavior */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 64px; /* Navbar height */
+}
+
+/* Phase 5: Scroll-based fade-in animation */
+@keyframes scrollFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Phase 5: Performance optimizations */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Phase 5: Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Phase 5: Custom scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #022C22;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(#10B981, #065F46);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(#10B981, #014a2f);
+}
+
+/* Autofill styling - Match password field appearance */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-text-fill-color: #D1FAE5 !important;
+  transition: background-color 5000s ease-in-out 0s;
+  box-shadow: inset 0 0 0 1000px rgba(255, 255, 255, 0.05) !important;
+  caret-color: #D1FAE5 !important;
+}
+
+/* Ensure autofill text remains visible */
+input:-webkit-autofill::first-line {
+  color: #D1FAE5 !important;
+}
