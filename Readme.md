@@ -2,10 +2,12 @@
 
 > A modern real-time messaging platform built with the MERN stack, featuring instant messaging, AI-powered conversations, browser notifications, and a responsive user experience.
 
-![GitHub stars](https://img.shields.io/github/stars/Akash30112004/SnapLink?style=for-the-badge)
-![GitHub forks](https://img.shields.io/github/forks/Akash30112004/SnapLink?style=for-the-badge)
-![GitHub last commit](https://img.shields.io/github/last-commit/Akash30112004/SnapLink?style=for-the-badge)
-![License](https://img.shields.io/github/license/Akash30112004/SnapLink?style=for-the-badge)
+![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-Express-339933?logo=node.js&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-Database-47A248?logo=mongodb&logoColor=white)
+![Socket.IO](https://img.shields.io/badge/Socket.IO-Real--Time-010101?logo=socketdotio)
+![JWT](https://img.shields.io/badge/JWT-Authentication-000000?logo=jsonwebtokens)
+![Ollama](https://img.shields.io/badge/Ollama-AI-000000)
 
 ---
 
