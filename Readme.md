@@ -1,128 +1,288 @@
-# SnapLink Implementation Overview
+# 🚀 SnapLink
 
-This document summarizes the current implementation state of the SnapLink project, based on work completed so far. It focuses on features, architecture, and the key files to check when making future changes.
+> A modern real-time messaging platform built with the MERN stack, featuring instant messaging, AI-powered conversations, browser notifications, and a responsive user experience.
 
-## 1. High-Level Architecture
+![GitHub stars](https://img.shields.io/github/stars/Akash30112004/SnapLink?style=for-the-badge)
+![GitHub forks](https://img.shields.io/github/forks/Akash30112004/SnapLink?style=for-the-badge)
+![GitHub last commit](https://img.shields.io/github/last-commit/Akash30112004/SnapLink?style=for-the-badge)
+![License](https://img.shields.io/github/license/Akash30112004/SnapLink?style=for-the-badge)
 
-- Frontend: React + Vite + Socket.IO client
-- Backend: Node.js + Express + MongoDB + Mongoose + Socket.IO
-- AI: Local Ollama server (Llama 3) running at http://localhost:11434
-- Notifications: Web Audio API + HTML5 Audio fallback + Browser Notifications API
-- Storage: localStorage for UI settings and per-chat mute state
+---
 
-## 2. Core Features Implemented
+# 📸 Screenshots
 
-### Authentication
-- Forgot password flow
-- Change password
-- Logout
+> Replace these images with your own screenshots.
 
-### Chat (Realtime)
-- Socket.IO message delivery
-- Optimistic UI message updates for faster send
-- Message ordering sorted by timestamp to fix out-of-order issues
-- Real-time reactions and deletions
+## Login Page
 
-### AI Chatbot
-- Gemini integration replaced by local Ollama + Llama 3
-- Non-blocking AI response handling in backend
+![Login](assets/login.png)
 
-### Notifications
-- Sound notifications (Web Audio API)
-- HTML5 Audio fallback
-- Desktop/browser notifications
-- Global notification on/off toggle
-- Global sound on/off toggle
-- Per-conversation mute (localStorage persisted)
+---
 
-## 3. Notifications Behavior (Current)
+## Chat Dashboard
 
-- Notification logic is triggered on incoming Socket.IO events.
-- Each client decides whether to notify based on its own settings.
-- Sound and popup are controlled independently:
-  - Notifications toggle -> Browser popup
-  - Sound toggle -> Audio beep
-- Per-conversation mute overrides both sound and popup.
-- Bot messages do not trigger notifications.
+![Dashboard](assets/dashboard.png)
 
-## 4. Key Frontend Files
+---
 
-### notificationService
-- File: frontend/src/services/notificationService.js
-- Responsibilities:
-  - Audio sound generation (Web Audio + HTML5 fallback)
-  - Desktop notifications via Notification API
-  - Audio unlock handler for browser autoplay policies
+## AI Chat Assistant
 
-### Main layout
-- File: frontend/src/layouts/MainLayout.jsx
-- Responsibilities:
-  - Socket.IO listener for receive_message
-  - Notification logic (sound + popup)
-  - Settings persistence in localStorage
-  - Per-conversation mute state
+![AI Chat](assets/ai-chat.png)
 
-### Chat UI
-- Chat header: frontend/src/components/chat/ChatHeader.jsx
-  - Mute/unmute toggle button per conversation
-- Chat window: frontend/src/components/chat/ChatWindow.jsx
-  - Passes mute state and toggle handler down to ChatHeader
+---
 
-### Settings
-- Settings modal: frontend/src/components/modals/SettingsModal.jsx
-  - Global toggles: Notifications, Sound, Compact mode, Message previews
-- Own profile panel: frontend/src/components/chat/OwnProfilePanel.jsx
-  - Uses shared settings state to update notification toggle
+## Settings Panel
 
-### Constants
-- File: frontend/src/utils/constants.js
-- Important keys:
-  - STORAGE_KEYS.SETTINGS
-  - STORAGE_KEYS.MUTED_CONVERSATIONS
+![Settings](assets/settings.png)
 
-## 5. Key Backend Files
+---
 
-### Message controller
-- File: backend/src/controllers/message.controller.js
-- Responsibilities:
-  - Message creation
-  - Emit receive_message to Socket.IO rooms
-  - AI response generation in background (non-blocking)
+## Mobile View
 
-## 6. Data Flow Summary
+![Mobile](assets/mobile.png)
 
-### Message Send
-1. User sends message -> backend saves
-2. Backend emits receive_message to conversation room
-3. Frontend listener updates UI
-4. If notification conditions pass -> sound + popup
+---
 
-### Notification Decision (Client)
-- If message is not from self
-- If message is not from bot
-- If conversation not muted
-- If sound toggle ON -> play sound
-- If notifications toggle ON -> show popup
+# ✨ Features
 
-## 7. Common Troubleshooting
+- 🔐 Secure JWT Authentication
+- 💬 Real-Time Messaging using Socket.IO
+- 🤖 AI Chat Assistant powered by Ollama + Llama 3
+- ⚡ Optimistic UI Updates
+- 😀 Emoji Reactions
+- 🗑️ Delete Messages
+- 🔔 Browser Notifications
+- 🔊 Sound Notifications
+- 🔕 Per-Conversation Mute
+- ⚙️ User Preferences Persistence
+- 📱 Fully Responsive Design
+- 🚀 Fast React + Vite Frontend
 
-- No sound: browser autoplay policy requires a user interaction first
-- Notifications not shown: browser permission must be granted
-- Per-chat mute not working: check stored IDs in localStorage
+---
 
-## 8. Quick File Map
+# 🛠 Tech Stack
 
-- frontend/src/layouts/MainLayout.jsx
-- frontend/src/services/notificationService.js
-- frontend/src/components/chat/ChatHeader.jsx
-- frontend/src/components/chat/ChatWindow.jsx
-- frontend/src/components/chat/OwnProfilePanel.jsx
-- frontend/src/components/modals/SettingsModal.jsx
-- frontend/src/utils/constants.js
-- backend/src/controllers/message.controller.js
+## Frontend
 
-## 9. Suggested Next Steps
+- React
+- Vite
+- JavaScript
+- CSS
+- Socket.IO Client
 
-- Add click behavior for browser notifications to open the related chat
-- Add visual indicator for muted conversations in the sidebar
-- Add per-group notification override if needed
+## Backend
+
+- Node.js
+- Express.js
+- Socket.IO
+- JWT Authentication
+
+## Database
+
+- MongoDB
+- Mongoose
+
+## AI
+
+- Ollama
+- Llama 3
+
+---
+
+# 🏗 Architecture
+
+```text
+                User
+                  │
+                  ▼
+        React + Vite Frontend
+                  │
+      REST API + Socket.IO
+                  │
+                  ▼
+        Express + Node Backend
+          │              │
+          │              │
+          ▼              ▼
+      MongoDB       Ollama (Llama 3)
+```
+
+---
+
+# 📂 Folder Structure
+
+```text
+SnapLink
+│
+├── frontend
+│   ├── public
+│   ├── src
+│   │   ├── components
+│   │   ├── pages
+│   │   ├── layouts
+│   │   ├── services
+│   │   ├── hooks
+│   │   └── utils
+│
+├── backend
+│   ├── src
+│   │   ├── controllers
+│   │   ├── routes
+│   │   ├── middleware
+│   │   ├── models
+│   │   ├── sockets
+│   │   └── utils
+│
+└── README.md
+```
+
+---
+
+# ⚙️ Installation
+
+## Clone Repository
+
+```bash
+git clone https://github.com/Akash30112004/SnapLink.git
+```
+
+---
+
+## Backend Setup
+
+```bash
+cd backend
+npm install
+npm run dev
+```
+
+---
+
+## Frontend Setup
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+---
+
+# 🔑 Environment Variables
+
+Create a `.env` file inside the backend directory.
+
+```env
+PORT=
+
+MONGO_URI=
+
+JWT_SECRET=
+
+CLIENT_URL=
+
+OLLAMA_URL=http://localhost:11434
+```
+
+---
+
+# 📡 API Endpoints
+
+| Method | Endpoint | Description |
+|---------|----------|-------------|
+| POST | `/auth/register` | Register User |
+| POST | `/auth/login` | Login User |
+| POST | `/auth/logout` | Logout User |
+| POST | `/auth/forgot-password` | Forgot Password |
+| POST | `/messages` | Send Message |
+| GET | `/messages/:conversationId` | Fetch Messages |
+| DELETE | `/messages/:messageId` | Delete Message |
+
+---
+
+# 🚀 Performance Highlights
+
+- Instant real-time messaging
+- Optimistic UI updates
+- Non-blocking AI responses
+- Persistent user preferences
+- Responsive across desktop and mobile devices
+- Browser notification support
+- Local AI inference using Ollama
+
+---
+
+# 🧠 Challenges Faced
+
+- Maintaining correct message ordering across clients.
+- Preventing duplicate Socket.IO events.
+- Implementing optimistic UI without inconsistencies.
+- Handling browser autoplay restrictions for notification sounds.
+- Integrating local AI inference while keeping the chat responsive.
+
+---
+
+# 📚 What I Learned
+
+- Building scalable real-time applications with Socket.IO.
+- Implementing JWT-based authentication.
+- Managing application state in React.
+- Designing RESTful APIs using Express.js.
+- Integrating local Large Language Models through Ollama.
+- Working with MongoDB and Mongoose.
+- Handling browser notification APIs and audio permissions.
+
+---
+
+# 🗺 Roadmap
+
+- [ ] Group Chats
+- [ ] Voice Messages
+- [ ] Image/File Sharing
+- [ ] Message Search
+- [ ] Read Receipts
+- [ ] Video Calling
+- [ ] User Status (Online/Offline)
+- [ ] End-to-End Encryption
+- [ ] Progressive Web App (PWA)
+
+---
+
+# 📖 Documentation
+
+Detailed implementation notes are available in:
+
+```text
+docs/IMPLEMENTATION.md
+```
+
+---
+
+# 🤝 Contributing
+
+Contributions are welcome!
+
+1. Fork the repository
+2. Create a new feature branch
+3. Commit your changes
+4. Push to your branch
+5. Open a Pull Request
+
+---
+
+# 📄 License
+
+This project is licensed under the MIT License.
+
+---
+
+# 👨‍💻 Author
+
+**Akash Singh**
+
+- GitHub: https://github.com/Akash30112004
+- LinkedIn: *(Add your LinkedIn URL here)*
+
+---
+
+⭐ If you found this project helpful, consider giving it a star.
