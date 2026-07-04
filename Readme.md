@@ -9,37 +9,49 @@
 
 ---
 
-# 📸 Screenshots
+# 📸 Project Screenshots
 
-> Replace these images with your own screenshots.
-
-## Login Page
-
-![Login](assets/login.png)
+Explore the key features and user interface of **SnapLink**, a modern real-time messaging platform with AI-powered assistance.
 
 ---
 
-## Chat Dashboard
+## 🏠 Landing Page
 
-![Dashboard](assets/dashboard.png)
+A modern landing page introducing SnapLink's core features, AI-powered messaging, and responsive design.
 
----
-
-## AI Chat Assistant
-
-![AI Chat](assets/ai-chat.png)
+![Landing Page](assets/homePage.png)
 
 ---
 
-## Settings Panel
+## 🔐 Secure Authentication
 
-![Settings](assets/settings.png)
+Simple and secure authentication with **Remember Me**, **Forgot Password**, and responsive login experience.
+
+![Login Page](assets/loginPage.png)
 
 ---
 
-## Mobile View
+## 💬 Real-Time Messaging
 
-![Mobile](assets/mobile.png)
+Instant one-to-one messaging with online status, message delivery indicators, reactions, search, favorites, and chat management.
+
+![Chat Feature](assets/chatFeature.png)
+
+---
+
+## 👥 Group Conversations
+
+Create and manage group chats with multiple participants, media sharing, and collaborative communication.
+
+![Group Chat](assets/groupChat.png)
+
+---
+
+## 🤖 AI Assistant
+
+Integrated AI assistant powered by **Ollama + Llama 3** to answer questions, assist users, and enhance conversations.
+
+![AI ChatBot](assets/AiChatBot.png)
 
 ---
 
