@@ -79,7 +79,7 @@ Integrated AI assistant powered by **Ollama + Llama 3** to answer questions, ass
 - React
 - Vite
 - JavaScript
-- CSS
+- Tailwind CSS
 - Socket.IO Client
 
 ## Backend
@@ -293,7 +293,7 @@ This project is licensed under the MIT License.
 **Akash Singh**
 
 - GitHub: https://github.com/Akash30112004
-- LinkedIn: *(Add your LinkedIn URL here)*
+- LinkedIn: https://www.linkedin.com/in/akash456/
 
 ---
 
